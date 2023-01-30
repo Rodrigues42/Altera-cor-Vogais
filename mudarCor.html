@@ -1,0 +1,170 @@
+<html>
+    <header>
+        <h1>Altera a cor das Vogais </h1>
+    </header>
+    <body>
+        <div class="textbox">
+            <div class="box">
+                <textarea id="valor"></textarea>
+                <div class="botoes">
+                    <button onclick="mudarCor()"> Formatar </button>
+                    <button onclick="Limpar()"> Limpar </button>
+                </div>
+                <br>
+                <div class="resposta">
+                    <h1 id="texto" type="text" class="textosaida"></h1>
+                </div>
+                <div>
+                    <button class="copiar" id="copyButton">Copiar</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        function mudarCor(){
+            var valor = document.getElementById('valor');
+            var texto = document.getElementById('texto');
+            var resultado = "";
+
+            for(i=0; i<valor.value.length; i++){
+                var letra = valor.value[i].toLowerCase();        
+                if( letra === 'a' || letra === 'e' || letra === 'i' || letra === 'o' || letra === 'u'){
+                    resultado += '<font color="red">' + valor.value[i] + '</font>';
+                } else if(valor.value.substring(i, i+1) === "\n"){
+                    resultado += "<br>";
+                } else {
+                    console.log(valor.value[i])
+                    resultado += '<font color="blue">' + valor.value[i] + '</font>';
+                }
+            }
+
+            texto.innerHTML = resultado;
+        }
+
+        function Limpar(){
+            var valor = document.getElementById('valor');
+            var texto = document.getElementById('texto');
+            valor.value = "";
+            texto.innerHTML = "";
+        }
+
+    </script>
+    <style>
+        @font-face {
+            font-family: 'manuscrita';
+            src: url('./Maria_lucia.ttf');
+        }
+
+        html {
+            background-color: #feffff;
+            margin-top: -10px;
+            background-image: url('https://img.freepik.com/vetores-gratis/papel-de-parede-de-letras-em-ingles-em-aquarela-com-design-ludico_53876-100408.jpg');
+            
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            color: rgb(0, 0, 0);
+            font-size: 80px;
+            font-family: 'manuscrita';
+            margin: 0;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            resize: none;
+            color: #000000;
+            font-size: 25px;
+            border-radius: 3px;
+            line-height: 20px;
+            background-color: white;
+            border: 2px solid #000000;
+            transition: all 0.3s;
+            padding: 20px;
+            margin-bottom: 15px;
+          }
+
+          .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+          button {
+            margin-left: 10px;
+            margin-right: 10px;
+            font-family: 'open_sansregular';
+            width: 100%;
+            background:#00c2fd;
+            color: #ffffff;
+            border-radius:5px;
+            border:0;
+            cursor:pointer;
+            font-size:30px;
+            padding-top:10px;
+            padding-bottom:10px;
+            transition: all 0.3s;
+            margin-top:-4px;
+            font-weight:700;
+          }
+
+          .textosaida {
+            font-family: "manuscrita";
+          }
+
+          .textbox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+          }
+
+          .box {
+            margin: 20px;
+            width: 60%;
+            height: 100%;
+            padding: 5%;
+          }
+
+          .resposta {
+            font-size: 25px;
+            background-color: white;
+            margin-bottom: 10px;
+            width: 100%;
+            min-height:  300px;
+            border: 2px solid #000000;
+          }
+
+          .resposta h1 {
+            padding-left: 10px;
+          }
+
+          .copiar {
+            width:20%;
+            border: 1px solid black;
+            font-size: 20px;
+            color: #000000;
+            background:transparent;
+            margin: 0;
+          }
+
+          @media only screen and (max-width: 600px) {
+            textarea {
+                height: 200px;
+            }
+
+            .resposta {
+                height: 200px
+            }
+        }
+
+    </style>
+</html>
